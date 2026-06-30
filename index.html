@@ -5,33 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sungai Revive — Restoring Rivers. Empowering Communities.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
   --river: #0ea5e9;
-  --deep: #0369a1;
-  --forest: #16a34a;
-  --earth: #92400e;
-  --sand: #fef3c7;
-  --dark: #0f172a;
-  --mid: #1e293b;
-  --muted: #64748b;
+  --river-deep: #0284c7;
+  --leaf: #22c55e;
+  --leaf-deep: #16a34a;
+  --sun: #fbbf24;
+  --sun-deep: #f59e0b;
+  --coral: #fb7185;
+  --ink: #0f3b2e;
+  --muted: #5b7570;
+  --cream: #fbfdf9;
   --white: #ffffff;
-  --accent: #f59e0b;
-  --coral: #ef4444;
-  --teal: #0d9488;
+  --paper: #f3fbf2;
+  --sky: #eaf8ff;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background: var(--dark);
-  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
   overflow-x: hidden;
 }
+
+h1, h2, h3, .display { font-family: 'Baloo 2', sans-serif; }
 
 /* ─── NAV ─── */
 nav {
@@ -42,10 +44,10 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
-  background: rgba(15,23,42,0.85);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(14,165,233,0.15);
+  height: 76px;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(34,197,94,0.12);
   transition: all 0.3s;
 }
 
@@ -57,29 +59,30 @@ nav {
 }
 
 .nav-logo .drop {
-  width: 36px; height: 36px;
-  background: linear-gradient(135deg, var(--river), var(--teal));
+  width: 40px; height: 40px;
+  background: linear-gradient(140deg, var(--river), var(--leaf));
   border-radius: 50% 50% 50% 0;
   transform: rotate(-45deg);
   flex-shrink: 0;
   position: relative;
-  animation: pulse-drop 3s ease-in-out infinite;
+  box-shadow: 0 4px 14px rgba(34,197,94,0.35);
+  animation: bob 3s ease-in-out infinite;
 }
 
-@keyframes pulse-drop {
-  0%,100% { box-shadow: 0 0 0 0 rgba(14,165,233,0.4); }
-  50% { box-shadow: 0 0 0 10px rgba(14,165,233,0); }
+@keyframes bob {
+  0%,100% { transform: rotate(-45deg) translateY(0); }
+  50% { transform: rotate(-45deg) translateY(-4px); }
 }
 
 .nav-logo span {
-  font-size: 1.1rem;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.3rem;
   font-weight: 800;
-  color: var(--white);
-  letter-spacing: -0.3px;
+  color: var(--ink);
 }
 
 .nav-logo span em {
-  color: var(--river);
+  color: var(--leaf-deep);
   font-style: normal;
 }
 
@@ -91,346 +94,307 @@ nav {
 }
 
 .nav-links a {
-  color: rgba(255,255,255,0.75);
+  color: var(--muted);
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.3px;
+  font-size: 0.88rem;
+  font-weight: 600;
   transition: color 0.2s;
 }
 
-.nav-links a:hover { color: var(--river); }
+.nav-links a:hover { color: var(--leaf-deep); }
 
-/* Lang toggle */
 .lang-toggle {
   display: flex;
   gap: 4px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--paper);
+  border: 1px solid rgba(34,197,94,0.2);
   border-radius: 25px;
   padding: 4px;
 }
 
 .lang-btn {
-  padding: 4px 10px;
+  padding: 5px 11px;
   border-radius: 20px;
   border: none;
   background: transparent;
-  color: rgba(255,255,255,0.6);
+  color: var(--muted);
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
-  letter-spacing: 0.5px;
 }
 
 .lang-btn.active {
-  background: var(--river);
+  background: var(--leaf);
   color: white;
+  box-shadow: 0 2px 8px rgba(34,197,94,0.4);
 }
 
 .nav-cta {
-  background: linear-gradient(135deg, var(--river), var(--teal));
+  background: linear-gradient(135deg, var(--sun), var(--sun-deep));
   color: white !important;
-  padding: 8px 18px;
+  padding: 10px 20px;
   border-radius: 25px;
-  font-weight: 600 !important;
-  font-size: 0.82rem !important;
-  transition: opacity 0.2s !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  box-shadow: 0 4px 14px rgba(245,158,11,0.35);
+  transition: transform 0.2s !important;
 }
 
-.nav-cta:hover { opacity: 0.9; color: white !important; }
+.nav-cta:hover { transform: translateY(-2px); color: white !important; }
 
-/* ─── HERO ─── */
+/* ─── HERO — POSTER STYLE ─── */
 .hero {
   min-height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   overflow: hidden;
+  padding: 110px 2rem 4rem;
+  background: linear-gradient(180deg, #eafdf3 0%, #e3f7ff 45%, #fef9e7 100%);
 }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #030712 0%, #0c1a33 40%, #082f49 70%, #0c1a33 100%);
-}
-
-/* Animated river waves */
-.wave-container {
-  position: absolute;
-  bottom: 0;
-  left: 0; right: 0;
-  height: 300px;
-  overflow: hidden;
-}
-
-.wave {
-  position: absolute;
-  bottom: 0;
-  width: 200%;
-  height: 100%;
-}
-
-.wave svg {
-  width: 100%;
-  height: 100%;
-}
-
-.wave-1 { animation: wave-move 8s linear infinite; opacity: 0.6; }
-.wave-2 { animation: wave-move 12s linear infinite reverse; opacity: 0.3; bottom: 20px; }
-.wave-3 { animation: wave-move 16s linear infinite; opacity: 0.2; bottom: 40px; }
-
-@keyframes wave-move {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* Floating particles */
-.particles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.particle {
+.blob {
   position: absolute;
   border-radius: 50%;
-  background: var(--river);
-  opacity: 0;
-  animation: float-up var(--dur) ease-in infinite;
-  animation-delay: var(--delay);
+  filter: blur(5px);
+  opacity: 0.5;
 }
 
-@keyframes float-up {
-  0% { transform: translateY(100vh) scale(0); opacity: 0; }
-  10% { opacity: 0.6; }
-  90% { opacity: 0.2; }
-  100% { transform: translateY(-100px) scale(1); opacity: 0; }
+.blob-1 { width: 340px; height: 340px; background: radial-gradient(circle, #bbf7d0, transparent 70%); top: -80px; left: -80px; }
+.blob-2 { width: 420px; height: 420px; background: radial-gradient(circle, #bae6fd, transparent 70%); bottom: -120px; right: -100px; }
+.blob-3 { width: 260px; height: 260px; background: radial-gradient(circle, #fde68a, transparent 70%); top: 40%; right: 6%; }
+
+.float-icon {
+  position: absolute;
+  font-size: 2.2rem;
+  animation: floaty 6s ease-in-out infinite;
+  opacity: 0.85;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.08));
+}
+
+@keyframes floaty {
+  0%,100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-18px) rotate(4deg); }
 }
 
 .hero-content {
   position: relative;
-  z-index: 10;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 120px 2rem 2rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  width: 100%;
+  z-index: 5;
+  max-width: 900px;
+  text-align: center;
 }
 
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(14,165,233,0.15);
-  border: 1px solid rgba(14,165,233,0.3);
-  border-radius: 25px;
-  padding: 6px 16px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--river);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-}
-
-.hero-badge::before {
-  content: '';
-  width: 6px; height: 6px;
-  background: var(--river);
-  border-radius: 50%;
-  animation: blink 2s infinite;
-}
-
-@keyframes blink {
-  0%,100% { opacity: 1; }
-  50% { opacity: 0.2; }
+  background: white;
+  border: 2px dashed var(--leaf);
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--leaf-deep);
+  margin-bottom: 1.8rem;
+  box-shadow: 0 4px 14px rgba(34,197,94,0.15);
 }
 
 .hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.5rem, 5vw, 4.2rem);
-  font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
+  font-size: clamp(2.6rem, 6.5vw, 5rem);
+  font-weight: 800;
+  line-height: 1.08;
+  margin-bottom: 1.2rem;
+  color: var(--ink);
 }
 
 .hero h1 .highlight {
-  background: linear-gradient(135deg, var(--river), var(--teal), var(--forest));
+  background: linear-gradient(135deg, var(--river), var(--leaf-deep));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .hero-tagline {
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.65);
-  margin-bottom: 0.75rem;
-  line-height: 1.6;
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin: 0 auto 1rem;
+  line-height: 1.7;
+  max-width: 640px;
+  font-weight: 500;
 }
 
-.hero-bm {
-  font-size: 1.1rem;
+.hero-bm-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--sun), var(--coral));
+  color: white;
   font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 2rem;
-  font-style: italic;
+  font-size: 0.95rem;
+  padding: 10px 26px;
+  border-radius: 40px;
+  margin: 0.5rem 0 2rem;
+  box-shadow: 0 6px 18px rgba(251,113,133,0.3);
+  transform: rotate(-2deg);
 }
 
 .hero-btns {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--river), var(--teal));
+  background: linear-gradient(135deg, var(--leaf), var(--leaf-deep));
   color: white;
-  padding: 14px 28px;
+  padding: 16px 32px;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   transition: all 0.3s;
-  box-shadow: 0 4px 30px rgba(14,165,233,0.4);
+  box-shadow: 0 8px 24px rgba(34,197,94,0.35);
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 40px rgba(14,165,233,0.5);
-}
+.btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 30px rgba(34,197,94,0.45); }
 
 .btn-secondary {
-  background: rgba(255,255,255,0.08);
-  color: white;
-  padding: 14px 28px;
+  background: white;
+  color: var(--ink);
+  padding: 16px 32px;
   border-radius: 50px;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  border: 1px solid rgba(255,255,255,0.2);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 2px solid var(--river);
   display: inline-flex;
   align-items: center;
   gap: 8px;
   transition: all 0.3s;
 }
 
-.btn-secondary:hover {
-  background: rgba(255,255,255,0.15);
-  border-color: var(--river);
-  transform: translateY(-2px);
+.btn-secondary:hover { background: var(--sky); transform: translateY(-3px); }
+
+.hero-mascots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+  font-size: 1.6rem;
 }
 
-/* Hero stats */
-.hero-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-
-.stat-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(14,165,233,0.2);
-  border-radius: 16px;
-  padding: 1.5rem;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-.stat-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--river), var(--teal));
-}
-
-.stat-card:hover {
-  border-color: var(--river);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 40px rgba(14,165,233,0.2);
-}
-
-.stat-num {
-  font-size: 2.2rem;
-  font-weight: 900;
-  color: var(--river);
-  line-height: 1;
-  margin-bottom: 0.3rem;
-}
-
-.stat-label {
+.mascot-pill {
+  background: white;
+  border-radius: 30px;
+  padding: 8px 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.55);
-  font-weight: 500;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.stat-icon {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
+.scroll-indicator {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.6;
+  animation: bounce 2s infinite;
+  z-index: 10;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+.scroll-indicator span { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.scroll-arrow { font-size: 1.2rem; color: var(--leaf-deep); }
+
+/* ─── PARTNERS STRIP ─── */
+.partners-strip {
+  background: white;
+  border-top: 1px solid rgba(34,197,94,0.1);
+  border-bottom: 1px solid rgba(34,197,94,0.1);
+  padding: 1.6rem 2rem;
+  text-align: center;
+}
+
+.partners-strip p {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.partners-logos { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+.partner-logo-pill {
+  background: var(--paper);
+  border: 1px solid rgba(34,197,94,0.2);
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
 }
 
 /* ─── SECTION COMMONS ─── */
-section {
-  padding: 5rem 2rem;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+section { padding: 5.5rem 2rem; }
+.container { max-width: 1200px; margin: 0 auto; }
 
 .section-label {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--river);
+  background: var(--paper);
+  color: var(--leaf-deep);
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-
-.section-label::before {
-  content: '';
-  width: 24px; height: 2px;
-  background: var(--river);
+  margin-bottom: 1.2rem;
+  padding: 6px 16px;
+  border-radius: 20px;
 }
 
 .section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 900;
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1rem;
+  color: var(--ink);
 }
 
 .section-sub {
-  color: rgba(255,255,255,0.6);
-  font-size: 1rem;
-  line-height: 1.7;
-  max-width: 600px;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  max-width: 620px;
+  font-weight: 500;
 }
 
-.text-river { color: var(--river); }
-.text-accent { color: var(--accent); }
-.text-forest { color: #4ade80; }
+.center { text-align: center; margin-left: auto; margin-right: auto; }
+.text-river { color: var(--river-deep); }
+.text-leaf { color: var(--leaf-deep); }
+.text-sun { color: var(--sun-deep); }
+.text-coral { color: var(--coral); }
 
 /* ─── WHY RIVERS MATTER ─── */
-.why-rivers {
-  background: linear-gradient(180deg, var(--dark) 0%, #071428 100%);
-}
+.why-rivers { background: var(--white); }
 
 .pillars-grid {
   display: grid;
@@ -440,138 +404,131 @@ section {
 }
 
 .pillar-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px;
-  padding: 2rem 1.5rem;
+  background: var(--paper);
+  border: 2px solid transparent;
+  border-radius: 24px;
+  padding: 2.2rem 1.6rem;
   text-align: center;
-  transition: all 0.4s;
+  transition: all 0.35s;
   cursor: default;
-  position: relative;
-  overflow: hidden;
-}
-
-.pillar-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 0;
-  background: linear-gradient(180deg, transparent, rgba(14,165,233,0.08));
-  transition: height 0.4s;
 }
 
 .pillar-card:hover {
-  border-color: rgba(14,165,233,0.4);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(14,165,233,0.15);
+  border-color: var(--leaf);
+  transform: translateY(-8px) rotate(-1deg);
+  box-shadow: 0 20px 40px rgba(34,197,94,0.18);
+  background: white;
 }
 
-.pillar-card:hover::after { height: 100%; }
-
 .pillar-icon {
-  width: 70px; height: 70px;
-  border-radius: 20px;
+  width: 76px; height: 76px;
+  border-radius: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 2.1rem;
   margin: 0 auto 1.2rem;
 }
 
-.pillar-card h3 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 0.6rem;
+.pillar-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--ink); }
+.pillar-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+
+/* ─── STATS STRIP (moved down, lower page) ─── */
+.stats-strip {
+  background: linear-gradient(135deg, #0ea5e9, #16a34a);
+  padding: 4rem 2rem;
 }
 
-.pillar-card p {
-  font-size: 0.83rem;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.6;
+.stats-strip .section-label { background: rgba(255,255,255,0.2); color: white; }
+.stats-strip .section-title { color: white; }
+.stats-strip .section-sub { color: rgba(255,255,255,0.85); }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2.5rem;
 }
+
+.stat-card {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 1.8rem 1rem;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s;
+}
+
+.stat-card:hover { transform: translateY(-6px); background: rgba(255,255,255,0.25); }
+.stat-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.stat-num { font-size: 2.3rem; font-weight: 800; color: white; line-height: 1; margin-bottom: 0.3rem; font-family: 'Baloo 2', sans-serif; }
+.stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.9); font-weight: 600; }
 
 /* ─── JOURNEY / TIMELINE ─── */
-.journey {
-  background: #071428;
-  position: relative;
-}
+.journey { background: var(--sky); }
 
-.timeline {
-  position: relative;
-  margin-top: 3rem;
-}
+.timeline { position: relative; margin-top: 3rem; }
 
 .timeline::before {
   content: '';
   position: absolute;
   left: 50%;
   top: 0; bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, var(--river), var(--teal), var(--forest));
+  width: 4px;
+  background: repeating-linear-gradient(180deg, var(--river) 0 14px, transparent 14px 24px);
   transform: translateX(-50%);
+  border-radius: 4px;
 }
 
 .timeline-item {
   display: grid;
-  grid-template-columns: 1fr 60px 1fr;
+  grid-template-columns: 1fr 70px 1fr;
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   align-items: center;
 }
 
-.timeline-item:nth-child(even) .tl-content { order: 3; text-align: left; }
-.timeline-item:nth-child(even) .tl-empty { order: 1; }
+.timeline-item:nth-child(even) .tl-content { grid-column: 3; text-align: left; }
+.timeline-item:nth-child(odd) .tl-content { grid-column: 1; text-align: right; }
+.timeline-item .tl-dot { grid-column: 2; }
 
 .tl-content {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-  padding: 1.5rem;
+  background: white;
+  border-radius: 20px;
+  padding: 1.6rem;
+  box-shadow: 0 6px 20px rgba(14,165,233,0.1);
   transition: all 0.3s;
 }
 
-.tl-content:hover {
-  border-color: rgba(14,165,233,0.3);
-  background: rgba(14,165,233,0.05);
-}
+.tl-content:hover { box-shadow: 0 12px 30px rgba(14,165,233,0.2); transform: translateY(-4px); }
 
 .tl-dot {
-  width: 50px; height: 50px;
-  background: linear-gradient(135deg, var(--river), var(--teal));
+  width: 60px; height: 60px;
+  background: linear-gradient(135deg, var(--river), var(--leaf));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin: 0 auto;
-  box-shadow: 0 0 0 6px rgba(14,165,233,0.15);
+  box-shadow: 0 0 0 6px white, 0 0 0 9px rgba(34,197,94,0.2);
 }
 
 .tl-phase {
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 1.5px;
-  color: var(--river);
+  color: var(--leaf-deep);
   text-transform: uppercase;
   margin-bottom: 0.4rem;
 }
 
-.tl-content h3 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.tl-content p {
-  font-size: 0.83rem;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.6;
-}
+.tl-content h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--ink); }
+.tl-content p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
 
 /* ─── TOOLKIT ─── */
-.toolkit {
-  background: linear-gradient(135deg, #071428 0%, #0c1a0a 100%);
-}
+.toolkit { background: white; }
 
 .toolkit-grid {
   display: grid;
@@ -581,71 +538,107 @@ section {
 }
 
 .toolkit-card {
-  border-radius: 20px;
-  padding: 2rem;
+  border-radius: 24px;
+  padding: 2.2rem;
   text-decoration: none;
-  color: white;
-  transition: all 0.4s;
-  position: relative;
-  overflow: hidden;
+  color: var(--ink);
+  transition: all 0.35s;
   display: block;
+  border: 2px solid transparent;
 }
 
-.toolkit-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.4s;
-}
+.toolkit-card:hover { transform: translateY(-8px) rotate(-0.5deg); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
-.toolkit-card:hover::before { opacity: 1; }
-.toolkit-card:hover { transform: translateY(-6px) scale(1.01); }
+.tk-blue { background: #eaf8ff; }
+.tk-green { background: #effdf2; }
+.tk-amber { background: #fff8e6; }
+.tk-teal { background: #e6fbf8; }
+.tk-coral { background: #fff0f1; }
+.tk-purple { background: #f4f0ff; }
 
-.tk-blue { background: linear-gradient(135deg, #0c3a5c, #0a2640); border: 1px solid rgba(14,165,233,0.3); }
-.tk-green { background: linear-gradient(135deg, #0a2e14, #071f0c); border: 1px solid rgba(22,163,74,0.3); }
-.tk-amber { background: linear-gradient(135deg, #2d1b00, #1a1000); border: 1px solid rgba(245,158,11,0.3); }
-.tk-teal { background: linear-gradient(135deg, #042e2b, #021f1d); border: 1px solid rgba(13,148,136,0.3); }
-.tk-coral { background: linear-gradient(135deg, #2d0a0a, #1a0606); border: 1px solid rgba(239,68,68,0.3); }
-.tk-purple { background: linear-gradient(135deg, #1a0a2e, #0d0618); border: 1px solid rgba(139,92,246,0.3); }
+.tk-icon { font-size: 2.6rem; margin-bottom: 1rem; display: block; }
+.toolkit-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+.toolkit-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.2rem; }
 
-.tk-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  display: block;
-}
+.tk-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
-.toolkit-card h3 {
-  font-size: 1.1rem;
+.tk-tag {
+  background: white;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.72rem;
   font-weight: 700;
+  color: var(--ink);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* ─── ACTIVITIES ─── */
+.activities { background: var(--paper); }
+
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.activity-card {
+  border-radius: 24px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  transition: all 0.35s;
+}
+
+.activity-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(34,197,94,0.18); }
+
+.activity-img {
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.2rem;
+}
+
+.ai-blue { background: linear-gradient(135deg, #bae6fd, #eaf8ff); }
+.ai-green { background: linear-gradient(135deg, #bbf7d0, #effdf2); }
+.ai-amber { background: linear-gradient(135deg, #fde68a, #fff8e6); }
+.ai-teal { background: linear-gradient(135deg, #99f6e4, #e6fbf8); }
+
+.activity-body { padding: 1.6rem; }
+
+.activity-type {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--river-deep);
   margin-bottom: 0.5rem;
 }
 
-.toolkit-card p {
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.6);
-  line-height: 1.6;
-  margin-bottom: 1.2rem;
-}
+.activity-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; line-height: 1.3; color: var(--ink); }
+.activity-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
 
-.tk-tags {
+.activity-footer {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
 }
 
-.tk-tag {
-  background: rgba(255,255,255,0.1);
-  border-radius: 20px;
-  padding: 3px 10px;
-  font-size: 0.7rem;
-  font-weight: 600;
+.activity-age { font-size: 0.74rem; color: var(--muted); font-weight: 500; }
+
+.activity-link {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--leaf-deep);
+  text-decoration: none;
 }
 
-/* ─── SCIENCE / TECH ─── */
-.science {
-  background: #030712;
-}
+/* ─── SCIENCE ─── */
+.science { background: white; }
 
 .tech-cards {
   display: grid;
@@ -656,20 +649,13 @@ section {
 
 .tech-card {
   text-align: center;
-  padding: 2.5rem 1.5rem;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: all 0.4s;
-  position: relative;
-  overflow: hidden;
+  padding: 2.5rem 1.6rem;
+  border-radius: 28px;
+  background: var(--paper);
+  transition: all 0.35s;
 }
 
-.tech-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--river);
-  box-shadow: 0 20px 60px rgba(14,165,233,0.2);
-}
+.tech-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(34,197,94,0.15); background: white; }
 
 .tech-visual {
   width: 100px; height: 100px;
@@ -679,24 +665,14 @@ section {
   align-items: center;
   justify-content: center;
   font-size: 3rem;
-  position: relative;
 }
 
-.tv-blue { background: radial-gradient(circle, rgba(14,165,233,0.2), rgba(14,165,233,0.05)); border: 2px solid rgba(14,165,233,0.3); }
-.tv-green { background: radial-gradient(circle, rgba(22,163,74,0.2), rgba(22,163,74,0.05)); border: 2px solid rgba(22,163,74,0.3); }
-.tv-amber { background: radial-gradient(circle, rgba(245,158,11,0.2), rgba(245,158,11,0.05)); border: 2px solid rgba(245,158,11,0.3); }
+.tv-blue { background: linear-gradient(135deg, #bae6fd, #eaf8ff); }
+.tv-green { background: linear-gradient(135deg, #bbf7d0, #effdf2); }
+.tv-amber { background: linear-gradient(135deg, #fde68a, #fff8e6); }
 
-.tech-card h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-}
-
-.tech-card p {
-  font-size: 0.83rem;
-  color: rgba(255,255,255,0.6);
-  line-height: 1.7;
-}
+.tech-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--ink); }
+.tech-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
 
 .tech-metrics {
   display: flex;
@@ -704,75 +680,51 @@ section {
   gap: 1.5rem;
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 
-.tech-metric {
-  text-align: center;
+.tech-metric { text-align: center; }
+.tech-metric .num { font-size: 1.2rem; font-weight: 800; color: var(--river-deep); }
+.tech-metric .lbl { font-size: 0.68rem; color: var(--muted); }
+
+.wq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
 }
 
-.tech-metric .num {
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--river);
-}
-
-.tech-metric .lbl {
-  font-size: 0.68rem;
-  color: rgba(255,255,255,0.4);
-}
+.wq-card { background: var(--paper); border-radius: 18px; padding: 1.3rem; }
+.wq-name { font-size: 0.72rem; font-weight: 800; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; margin-bottom: 0.3rem; }
+.wq-label { font-size: 0.98rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--ink); }
+.wq-bar { height: 7px; background: rgba(0,0,0,0.08); border-radius: 4px; overflow: hidden; margin-bottom: 0.5rem; }
+.wq-fill { height: 100%; border-radius: 4px; }
+.wq-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.55; }
 
 /* ─── ESG DASHBOARD ─── */
-.esg {
-  background: linear-gradient(135deg, #030712 0%, #0a1628 100%);
-}
+.esg { background: var(--sky); }
 
 .esg-dashboard {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(14,165,233,0.15);
-  border-radius: 24px;
+  background: white;
+  border-radius: 28px;
   padding: 2.5rem;
   margin-top: 3rem;
+  box-shadow: 0 10px 40px rgba(14,165,233,0.1);
 }
 
-.esg-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.esg-title-block h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-}
-
-.esg-title-block p {
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.5);
-}
+.esg-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+.esg-title-block h3 { font-size: 1.3rem; font-weight: 700; color: var(--ink); }
+.esg-title-block p { font-size: 0.85rem; color: var(--muted); }
 
 .live-badge {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(74,222,128,0.1);
-  border: 1px solid rgba(74,222,128,0.3);
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #4ade80;
+  display: flex; align-items: center; gap: 6px;
+  background: #effdf2; border: 1px solid rgba(34,197,94,0.3);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 0.78rem; font-weight: 700; color: var(--leaf-deep);
 }
 
-.live-dot {
-  width: 6px; height: 6px;
-  background: #4ade80;
-  border-radius: 50%;
-  animation: blink 1.5s infinite;
-}
+.live-dot { width: 6px; height: 6px; background: var(--leaf); border-radius: 50%; animation: blink 1.5s infinite; }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
 
 .metrics-grid {
   display: grid;
@@ -782,144 +734,24 @@ section {
 }
 
 .metric-box {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
-  padding: 1.2rem;
+  background: var(--paper);
+  border-radius: 18px;
+  padding: 1.3rem;
   text-align: center;
   transition: all 0.3s;
 }
 
-.metric-box:hover {
-  border-color: var(--river);
-  background: rgba(14,165,233,0.05);
-}
+.metric-box:hover { background: #eaf8ff; transform: translateY(-4px); }
+.metric-box .icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+.metric-box .number { font-size: 1.9rem; font-weight: 800; line-height: 1; margin-bottom: 0.2rem; font-family: 'Baloo 2', sans-serif; }
+.metric-box .label { font-size: 0.75rem; color: var(--muted); font-weight: 600; }
 
-.metric-box .icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
-.metric-box .number {
-  font-size: 1.8rem;
-  font-weight: 900;
-  line-height: 1;
-  margin-bottom: 0.2rem;
-}
+.sdg-row { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #eee; }
 
-.metric-box .label {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.5);
-  font-weight: 500;
-}
-
-.sdg-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-
-.sdg-badge {
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  border: 1px solid;
-}
-
-/* ─── ACTIVITIES ─── */
-.activities {
-  background: #071428;
-}
-
-.activities-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-
-.activity-card {
-  border-radius: 20px;
-  overflow: hidden;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: all 0.4s;
-}
-
-.activity-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(14,165,233,0.3);
-  box-shadow: 0 20px 50px rgba(14,165,233,0.15);
-}
-
-.activity-img {
-  height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
-  position: relative;
-}
-
-.ai-blue { background: linear-gradient(135deg, #0c3a5c 0%, #071428 100%); }
-.ai-green { background: linear-gradient(135deg, #0a2e14 0%, #071428 100%); }
-.ai-amber { background: linear-gradient(135deg, #2d1b00 0%, #071428 100%); }
-.ai-teal { background: linear-gradient(135deg, #042e2b 0%, #071428 100%); }
-
-.activity-body {
-  padding: 1.5rem;
-}
-
-.activity-type {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--river);
-  margin-bottom: 0.5rem;
-}
-
-.activity-card h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 0.6rem;
-  line-height: 1.3;
-}
-
-.activity-card p {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.6;
-}
-
-.activity-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-
-.activity-age {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.4);
-}
-
-.activity-link {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--river);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
+.sdg-badge { padding: 7px 16px; border-radius: 20px; font-size: 0.74rem; font-weight: 800; border: none; }
 
 /* ─── GET INVOLVED ─── */
-.get-involved {
-  background: linear-gradient(135deg, #071428 0%, #030712 100%);
-}
+.get-involved { background: white; }
 
 .involve-grid {
   display: grid;
@@ -929,232 +761,64 @@ section {
 }
 
 .involve-card {
-  padding: 2rem 1.5rem;
-  border-radius: 20px;
+  padding: 2.2rem 1.6rem;
+  border-radius: 22px;
   text-align: center;
   text-decoration: none;
-  color: white;
-  transition: all 0.4s;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.03);
+  color: var(--ink);
+  transition: all 0.35s;
+  background: var(--paper);
   display: block;
 }
 
-.involve-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--river);
-  background: rgba(14,165,233,0.08);
-  box-shadow: 0 15px 40px rgba(14,165,233,0.2);
-}
+.involve-card:hover { transform: translateY(-8px) rotate(-1deg); box-shadow: 0 16px 36px rgba(34,197,94,0.2); background: white; }
 
-.involve-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.involve-card h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 0.4rem;
-}
-
-.involve-card p {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.5;
-}
+.involve-icon { font-size: 2.6rem; margin-bottom: 1rem; }
+.involve-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
+.involve-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
 
 /* ─── CTA BANNER ─── */
 .cta-banner {
-  background: linear-gradient(135deg, #0c3a5c 0%, #042e2b 50%, #0a2e14 100%);
+  background: linear-gradient(135deg, #fde68a 0%, #bbf7d0 50%, #bae6fd 100%);
   text-align: center;
   padding: 5rem 2rem;
-  position: relative;
-  overflow: hidden;
 }
 
-.cta-banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230ea5e9' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-.cta-banner h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 900;
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-.cta-banner p {
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 2rem;
-  position: relative;
-}
-
-.cta-banner .btns {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  position: relative;
-}
+.cta-banner h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem; color: var(--ink); }
+.cta-banner p { font-size: 1.05rem; color: var(--ink); opacity: 0.75; margin-bottom: 2rem; font-weight: 500; }
+.cta-banner .btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
 /* ─── FOOTER ─── */
-footer {
-  background: #030712;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 4rem 2rem 2rem;
-}
+footer { background: var(--ink); padding: 4rem 2rem 2rem; color: white; }
 
 .footer-grid {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 3rem;
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 3rem;
 }
 
-.footer-brand p {
-  font-size: 0.83rem;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.7;
-  margin: 1rem 0;
-}
+.footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin: 1rem 0; }
+.footer-tagline { font-size: 0.8rem; color: var(--sun); font-weight: 700; }
 
-.footer-tagline {
-  font-size: 0.78rem;
-  color: var(--accent);
-  font-weight: 600;
-  font-style: italic;
-}
-
-.footer-col h4 {
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 1rem;
-}
-
-.footer-col ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
-
-.footer-col a {
-  color: rgba(255,255,255,0.6);
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: color 0.2s;
-}
-
-.footer-col a:hover { color: var(--river); }
+.footer-col h4 { font-size: 0.8rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-col a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.86rem; transition: color 0.2s; }
+.footer-col a:hover { color: var(--leaf); }
 
 .footer-bottom {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  flex-wrap: wrap;
-  gap: 1rem;
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);
+  flex-wrap: wrap; gap: 1rem;
 }
 
-.footer-bottom p {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.35);
-}
-
-.footer-partners {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.partner-pill {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.5);
-}
-
-/* ─── WATER QUALITY BAR ─── */
-.wq-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.2rem;
-  margin-top: 2rem;
-}
-
-.wq-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 14px;
-  padding: 1.2rem;
-}
-
-.wq-name {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: rgba(255,255,255,0.5);
-  text-transform: uppercase;
-  margin-bottom: 0.3rem;
-}
-
-.wq-label {
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-}
-
-.wq-bar {
-  height: 6px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 3px;
-  overflow: hidden;
-  margin-bottom: 0.5rem;
-}
-
-.wq-fill {
-  height: 100%;
-  border-radius: 3px;
-  transition: width 1s ease;
-}
-
-.wq-desc {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.4);
-  line-height: 1.5;
-}
+.footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+.footer-partners { display: flex; gap: 1rem; align-items: center; }
+.partner-pill { background: rgba(255,255,255,0.08); border-radius: 20px; padding: 4px 14px; font-size: 0.74rem; font-weight: 700; color: rgba(255,255,255,0.7); }
 
 /* ─── SCROLL ANIMATIONS ─── */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ─── COUNTER ANIMATION ─── */
-.count-num { display: inline-block; }
+.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
@@ -1163,84 +827,22 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .hero-content { grid-template-columns: 1fr; gap: 3rem; }
-  .hero-stats { grid-template-columns: repeat(2, 1fr); }
   .timeline::before { left: 30px; }
-  .timeline-item { grid-template-columns: 30px 1fr; }
-  .tl-empty { display: none; }
-  .timeline-item:nth-child(even) .tl-content { order: 2; }
-  .timeline-item:nth-child(even) .tl-empty { display: none; }
+  .timeline-item { grid-template-columns: 60px 1fr; }
+  .timeline-item:nth-child(odd) .tl-content,
+  .timeline-item:nth-child(even) .tl-content { grid-column: 2; text-align: left; }
+  .timeline-item .tl-dot { grid-column: 1; }
   .toolkit-grid { grid-template-columns: 1fr; }
   .tech-cards { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .nav-links { display: none; }
-  .metrics-grid { grid-template-columns: repeat(3, 1fr); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ─── LANGUAGE HIDDEN ─── */
-[data-lang]:not(.lang-active) { display: none !important; }
-[data-lang].lang-active { display: block; }
-span[data-lang].lang-active { display: inline; }
-
-/* Partners strip */
-.partners-strip {
-  background: rgba(255,255,255,0.02);
-  border-top: 1px solid rgba(255,255,255,0.05);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  padding: 1.5rem 2rem;
-  text-align: center;
-}
-
-.partners-strip p {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: rgba(255,255,255,0.3);
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-
-.partners-logos {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.partner-logo-pill {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 30px;
-  padding: 8px 20px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.6);
-  letter-spacing: 0.5px;
-}
-
-/* Scroll indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  opacity: 0.5;
-  animation: bounce 2s infinite;
-  z-index: 10;
-}
-
-@keyframes bounce {
-  0%,100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(8px); }
-}
-
-.scroll-indicator span { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
-.scroll-arrow { font-size: 1.2rem; color: var(--river); }
+/* ─── LANGUAGE ─── */
+[data-lang] { display: none; }
+[data-lang].lang-active { display: inline; }
+div[data-lang].lang-active, p[data-lang].lang-active { display: block; }
 </style>
 </head>
 <body>
@@ -1258,7 +860,7 @@ span[data-lang].lang-active { display: inline; }
     <li><a href="#activities">Activities</a></li>
     <li><a href="#science">Science</a></li>
     <li><a href="#esg">ESG</a></li>
-    <li><a href="#involve" class="nav-cta">Join Movement →</a></li>
+    <li><a href="#involve" class="nav-cta">Join Movement 🌱</a></li>
   </ul>
 
   <div class="lang-toggle">
@@ -1269,106 +871,74 @@ span[data-lang].lang-active { display: inline; }
   </div>
 </nav>
 
-<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<!-- ═══════════════════════════════ HERO — POSTER STYLE ═══════════════════════════════ -->
 <section class="hero" id="home">
-  <div class="hero-bg"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
 
-  <!-- Particles -->
-  <div class="particles" id="particles"></div>
-
-  <!-- Wave animation -->
-  <div class="wave-container">
-    <div class="wave wave-1">
-      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <path fill="rgba(14,165,233,0.15)" d="M0,192L48,186.7C96,181,192,171,288,176C384,181,480,203,576,213.3C672,224,768,224,864,208C960,192,1056,160,1152,154.7C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
-      </svg>
-    </div>
-    <div class="wave wave-2">
-      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <path fill="rgba(13,148,136,0.12)" d="M0,256L48,245.3C96,235,192,213,288,208C384,203,480,213,576,224C672,235,768,245,864,240C960,235,1056,213,1152,202.7C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
-      </svg>
-    </div>
-    <div class="wave wave-3">
-      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <path fill="rgba(22,163,74,0.08)" d="M0,288L48,272C96,256,192,224,288,213.3C384,203,480,213,576,229.3C672,245,768,267,864,261.3C960,256,1056,224,1152,218.7C1248,213,1344,235,1392,245.3L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
-      </svg>
-    </div>
-  </div>
+  <div class="float-icon" style="top:18%; left:8%;">🐟</div>
+  <div class="float-icon" style="top:62%; left:6%; animation-delay:1s;">🌿</div>
+  <div class="float-icon" style="top:24%; right:9%; animation-delay:2s;">💧</div>
+  <div class="float-icon" style="top:70%; right:10%; animation-delay:1.5s;">🍃</div>
+  <div class="float-icon" style="top:46%; left:14%; animation-delay:0.5s;">🦋</div>
 
   <div class="hero-content">
-    <div>
-      <div class="hero-badge">
-        <span data-lang="en" class="lang-active">🌊 Community River Movement · Sarawak</span>
-        <span data-lang="bm">🌊 Gerakan Sungai Komuniti · Sarawak</span>
-        <span data-lang="zh">🌊 社区河流运动 · 砂拉越</span>
-        <span data-lang="ib">🌊 Gerakan Sungai Komuniti · Sarawak</span>
-      </div>
-
-      <h1>
-        <span data-lang="en" class="lang-active">Restoring <span class="highlight">Rivers.</span><br>Empowering <span class="highlight">Communities.</span></span>
-        <span data-lang="bm">Memulihkan <span class="highlight">Sungai.</span><br>Memperkasa <span class="highlight">Komuniti.</span></span>
-        <span data-lang="zh">修复 <span class="highlight">河流。</span><br>赋能 <span class="highlight">社区。</span></span>
-        <span data-lang="ib">Ngemulihka <span class="highlight">Sungai.</span><br>Nguatka <span class="highlight">Komuniti.</span></span>
-      </h1>
-
-      <p class="hero-tagline" data-lang="en" class="lang-active">
-        Sungai Revive is Sarawak's integrated river rehabilitation programme — uniting education, science, community action, and ESG leadership to restore our rivers for future generations.
-      </p>
-      <p class="hero-tagline" data-lang="bm" style="display:none">
-        Sungai Revive ialah program pemulihan sungai bersepadu Sarawak — menyatukan pendidikan, sains, tindakan komuniti dan kepimpinan ESG untuk memulihkan sungai kita untuk generasi akan datang.
-      </p>
-      <p class="hero-tagline" data-lang="zh" style="display:none">
-        Sungai Revive 是砂拉越综合河流修复计划——将教育、科学、社区行动和ESG领导力结合起来，为后代恢复河流生态。
-      </p>
-      <p class="hero-tagline" data-lang="ib" style="display:none">
-        Sungai Revive ke program pemulih sungai Sarawak — nyambung pendidikan, sains, tindak komuniti enggau ESG munyi ngembuan sungai kitai baka anak cucu.
-      </p>
-
-      <p class="hero-bm">✨ Jaga Sungai. Jadi Wira. Bina Masa Depan.</p>
-
-      <div class="hero-btns">
-        <a href="#toolkit" class="btn-primary">
-          <span data-lang="en" class="lang-active">Explore Programme</span>
-          <span data-lang="bm">Terokai Program</span>
-          <span data-lang="zh">探索计划</span>
-          <span data-lang="ib">Ngeransi Program</span>
-          →
-        </a>
-        <a href="#involve" class="btn-secondary">
-          <span data-lang="en" class="lang-active">🦸 Become a River Hero</span>
-          <span data-lang="bm">🦸 Jadi Wira Sungai</span>
-          <span data-lang="zh">🦸 成为河流英雄</span>
-          <span data-lang="ib">🦸 Jadi Wira Sungai</span>
-        </a>
-      </div>
+    <div class="hero-badge">
+      <span data-lang="en" class="lang-active">🌊 A Fun River Movement for Schools & Communities · Sarawak</span>
+      <span data-lang="bm">🌊 Gerakan Sungai Yang Seronok untuk Sekolah & Komuniti · Sarawak</span>
+      <span data-lang="zh">🌊 学校与社区的趣味河流运动 · 砂拉越</span>
+      <span data-lang="ib">🌊 Gerakan Sungai Pengelantang ke Sekula enggau Komuniti · Sarawak</span>
     </div>
 
-    <div class="hero-stats">
-      <div class="stat-card fade-up">
-        <div class="stat-icon">🌊</div>
-        <div class="stat-num count-num" data-target="12">0</div>
-        <div class="stat-label">Rivers Targeted</div>
-      </div>
-      <div class="stat-card fade-up">
-        <div class="stat-icon">🧱</div>
-        <div class="stat-num count-num" data-target="5000">0</div>
-        <div class="stat-label">Mudballs Deployed</div>
-      </div>
-      <div class="stat-card fade-up">
-        <div class="stat-icon">🏫</div>
-        <div class="stat-num count-num" data-target="30">0</div>
-        <div class="stat-label">Schools Engaged</div>
-      </div>
-      <div class="stat-card fade-up">
-        <div class="stat-icon">👥</div>
-        <div class="stat-num count-num" data-target="1200">0</div>
-        <div class="stat-label">Community Members</div>
-      </div>
+    <h1>
+      <span data-lang="en" class="lang-active">Let's Bring Our <span class="highlight">Rivers</span> Back to Life! 🌱</span>
+      <span data-lang="bm">Jom Hidupkan Semula <span class="highlight">Sungai</span> Kita! 🌱</span>
+      <span data-lang="zh">让我们一起<span class="highlight">复活河流</span>！🌱</span>
+      <span data-lang="ib">Mai Kitai Ngemulihka <span class="highlight">Sungai</span> Kitai! 🌱</span>
+    </h1>
+
+    <p class="hero-tagline lang-active" data-lang="en">
+      Sungai Revive is a fun, hands-on river rehabilitation programme for Sarawak — where students, teachers and communities learn, play, and take real action to heal our rivers together.
+    </p>
+    <p class="hero-tagline" data-lang="bm">
+      Sungai Revive ialah program pemulihan sungai yang seronok dan praktikal untuk Sarawak — di mana pelajar, guru dan komuniti belajar, bermain, dan mengambil tindakan sebenar untuk memulihkan sungai kita bersama.
+    </p>
+    <p class="hero-tagline" data-lang="zh">
+      Sungai Revive 是砂拉越一项有趣且注重实践的河流修复计划——学生、教师和社区在这里一起学习、玩乐，并采取实际行动共同修复我们的河流。
+    </p>
+    <p class="hero-tagline" data-lang="ib">
+      Sungai Revive ke program pemulih sungai ke pengelantang ke Sarawak — pelajar, guru enggau komuniti belajar, main, sereta ngaul tindak ulih nyaup sungai kitai sama-sama.
+    </p>
+
+    <div>
+      <span class="hero-bm-badge">✨ Jaga Sungai. Jadi Wira. Bina Masa Depan.</span>
+    </div>
+
+    <div class="hero-btns">
+      <a href="#toolkit" class="btn-primary">
+        <span data-lang="en" class="lang-active">🧰 Explore the Toolkit</span>
+        <span data-lang="bm">🧰 Terokai Toolkit</span>
+        <span data-lang="zh">🧰 探索工具包</span>
+        <span data-lang="ib">🧰 Ngeransi Toolkit</span>
+      </a>
+      <a href="#involve" class="btn-secondary">
+        <span data-lang="en" class="lang-active">🦸 Become a River Hero</span>
+        <span data-lang="bm">🦸 Jadi Wira Sungai</span>
+        <span data-lang="zh">🦸 成为河流英雄</span>
+        <span data-lang="ib">🦸 Jadi Wira Sungai</span>
+      </a>
+    </div>
+
+    <div class="hero-mascots">
+      <span class="mascot-pill">🏫 For Schools</span>
+      <span class="mascot-pill">👨‍👩‍👧 For Communities</span>
+      <span class="mascot-pill">🏢 For Corporates</span>
     </div>
   </div>
 
   <div class="scroll-indicator">
-    <span>Scroll</span>
+    <span>Scroll to Explore</span>
     <div class="scroll-arrow">↓</div>
   </div>
 </section>
@@ -1377,8 +947,8 @@ span[data-lang].lang-active { display: inline; }
 <div class="partners-strip">
   <p>Proudly powered by</p>
   <div class="partners-logos">
-    <div class="partner-logo-pill">⚡ SEB</div>
-    <div class="partner-logo-pill">🌿 KOBIS</div>
+    <div class="partner-logo-pill">⚡ Sarawak Energy</div>
+    <div class="partner-logo-pill">🌿 KOBIS Berhad</div>
     <div class="partner-logo-pill">🏛️ Sarawak Government</div>
     <div class="partner-logo-pill">🏫 Schools & Universities</div>
     <div class="partner-logo-pill">🤝 Community NGOs</div>
@@ -1387,46 +957,48 @@ span[data-lang].lang-active { display: inline; }
 
 <!-- ═══════════════════ WHY RIVERS MATTER ═══════════════════ -->
 <section class="why-rivers" id="about">
-  <div class="container">
+  <div class="container center" style="max-width:700px;">
     <div class="section-label">Why It Matters</div>
     <h2 class="section-title">
-      <span data-lang="en" class="lang-active">Rivers are <span class="text-river">Sarawak's</span> lifeline.</span>
-      <span data-lang="bm">Sungai adalah <span class="text-river">urat nadi</span> Sarawak.</span>
-      <span data-lang="zh">河流是 <span class="text-river">砂拉越</span> 的生命线。</span>
-      <span data-lang="ib">Sungai ke <span class="text-river">nyawa</span> Sarawak.</span>
+      <span data-lang="en" class="lang-active">Rivers are <span class="text-river">Sarawak's</span> lifeline 💙</span>
+      <span data-lang="bm">Sungai adalah <span class="text-river">urat nadi</span> Sarawak 💙</span>
+      <span data-lang="zh">河流是 <span class="text-river">砂拉越</span> 的生命线 💙</span>
+      <span data-lang="ib">Sungai ke <span class="text-river">nyawa</span> Sarawak 💙</span>
     </h2>
-    <p class="section-sub">
-      <span data-lang="en" class="lang-active">Our rivers are under threat from pollution, deforestation, and unsustainable practices. Sungai Revive addresses this through five integrated pillars.</span>
-      <span data-lang="bm">Sungai kita terancam oleh pencemaran, penebangan hutan, dan amalan tidak mampan. Sungai Revive menangani ini melalui lima tiang bersepadu.</span>
-      <span data-lang="zh">我们的河流正面临污染、森林砍伐和不可持续做法的威胁。Sungai Revive 通过五个综合支柱应对这一挑战。</span>
-      <span data-lang="ib">Sungai kitai diancam pencemaran, penebangan kayu enggau cara nadai mampan. Sungai Revive ngelaban nya ari lima bida.</span>
+    <p class="section-sub center">
+      <span data-lang="en" class="lang-active">Our rivers face pollution and neglect every day. Sungai Revive tackles this through 5 fun and meaningful pillars — built for everyone to join in.</span>
+      <span data-lang="bm">Sungai kita berdepan pencemaran setiap hari. Sungai Revive menangani ini melalui 5 tiang yang seronok dan bermakna — untuk semua orang.</span>
+      <span data-lang="zh">我们的河流每天都面临污染。Sungai Revive 通过5个有趣且有意义的支柱来应对——欢迎所有人参与。</span>
+      <span data-lang="ib">Sungai kitai diancam pencemaran sehari-hari. Sungai Revive ngelaban nya ari 5 bida ke pengelantang — digaga ke semua orang.</span>
     </p>
+  </div>
 
+  <div class="container">
     <div class="pillars-grid">
       <div class="pillar-card fade-up">
-        <div class="pillar-icon" style="background:rgba(14,165,233,0.12);">📚</div>
+        <div class="pillar-icon" style="background:#eaf8ff;">📚</div>
         <h3>Education</h3>
-        <p>School modules, activity worksheets, and River Heroes Kit empowering the next generation.</p>
+        <p>Fun school modules & worksheets that turn kids into river heroes.</p>
       </div>
       <div class="pillar-card fade-up">
-        <div class="pillar-icon" style="background:rgba(22,163,74,0.12);">🤝</div>
+        <div class="pillar-icon" style="background:#effdf2;">🤝</div>
         <h3>Community Action</h3>
-        <p>Clean-ups, mudball workshops, and volunteer programmes driving grassroots change.</p>
+        <p>Clean-ups, mudball workshops, and volunteer events for everyone.</p>
       </div>
       <div class="pillar-card fade-up">
-        <div class="pillar-icon" style="background:rgba(245,158,11,0.12);">🔬</div>
+        <div class="pillar-icon" style="background:#fff8e6;">🔬</div>
         <h3>Science & R&D</h3>
-        <p>Biochar, EM technology, and mudball innovation grounded in ecological science.</p>
+        <p>Biochar, EM, and mudball innovation — real science, made simple.</p>
       </div>
       <div class="pillar-card fade-up">
-        <div class="pillar-icon" style="background:rgba(13,148,136,0.12);">📊</div>
+        <div class="pillar-icon" style="background:#e6fbf8;">📊</div>
         <h3>ESG Leadership</h3>
-        <p>Measurable ESG impact aligned to UN Sustainable Development Goals.</p>
+        <p>Measurable impact aligned to UN Sustainable Development Goals.</p>
       </div>
       <div class="pillar-card fade-up">
-        <div class="pillar-icon" style="background:rgba(139,92,246,0.12);">🏞️</div>
+        <div class="pillar-icon" style="background:#f4f0ff;">🏞️</div>
         <h3>Long-term Stewardship</h3>
-        <p>River rehabilitation as a sustained movement, not a one-off campaign.</p>
+        <p>A movement built to last — not just a one-day campaign.</p>
       </div>
     </div>
   </div>
@@ -1434,50 +1006,48 @@ span[data-lang].lang-active { display: inline; }
 
 <!-- ═══════════════════ JOURNEY ═══════════════════ -->
 <section class="journey" id="journey">
-  <div class="container">
+  <div class="container center" style="max-width:700px;">
     <div class="section-label">Programme Journey</div>
-    <h2 class="section-title">The <span class="text-river">Sungai Revive</span> Roadmap</h2>
-    <p class="section-sub">A phased, community-driven journey from awareness to long-term river stewardship.</p>
+    <h2 class="section-title">The <span class="text-leaf">Sungai Revive</span> Roadmap 🗺️</h2>
+    <p class="section-sub center">A fun, phased journey from learning to lasting river stewardship.</p>
+  </div>
 
+  <div class="container">
     <div class="timeline">
       <div class="timeline-item">
-        <div class="tl-content fade-up" style="text-align:right;">
+        <div class="tl-content fade-up">
           <div class="tl-phase">Phase 1 · Foundation</div>
           <h3>🌱 Awareness & Education</h3>
-          <p>Deploy River Heroes Kit to schools. Launch Facilitator Guide. Begin community workshops. Baseline water quality assessments.</p>
+          <p>River Heroes Kit goes to schools. Facilitator Guide launches. Community workshops begin. Baseline water quality checks.</p>
         </div>
         <div class="tl-dot">🌱</div>
-        <div class="tl-empty"></div>
       </div>
 
       <div class="timeline-item">
-        <div class="tl-empty"></div>
-        <div class="tl-dot">🧱</div>
         <div class="tl-content fade-up">
           <div class="tl-phase">Phase 2 · Action</div>
           <h3>🧱 Mudball Production & Deployment</h3>
-          <p>Community mudball production events. River deployment with volunteers. ESG impact monitoring begins. School competitions and River Hero certification.</p>
+          <p>Community mudball-making events. River deployment with volunteers. School competitions and River Hero certification!</p>
         </div>
+        <div class="tl-dot">🧱</div>
       </div>
 
       <div class="timeline-item">
-        <div class="tl-content fade-up" style="text-align:right;">
+        <div class="tl-content fade-up">
           <div class="tl-phase">Phase 3 · Scale</div>
           <h3>📊 Monitoring & Measurement</h3>
-          <p>Water quality index tracking. ESG dashboard launch. Research documentation. Corporate ESG partnership expansion.</p>
+          <p>Water quality index tracking. ESG dashboard goes live. Research documentation. Corporate ESG partnerships grow.</p>
         </div>
         <div class="tl-dot">📊</div>
-        <div class="tl-empty"></div>
       </div>
 
       <div class="timeline-item">
-        <div class="tl-empty"></div>
-        <div class="tl-dot">🚀</div>
         <div class="tl-content fade-up">
           <div class="tl-phase">Phase 4 · Legacy</div>
           <h3>🚀 Stewardship & Replication</h3>
-          <p>Interactive River Map. AI River Assistant. Public reporting portal. Programme replication across Sarawak and Malaysia.</p>
+          <p>Interactive River Map. AI River Assistant. Public reporting portal. The movement spreads across Sarawak and beyond.</p>
         </div>
+        <div class="tl-dot">🚀</div>
       </div>
     </div>
   </div>
@@ -1485,19 +1055,20 @@ span[data-lang].lang-active { display: inline; }
 
 <!-- ═══════════════════ TOOLKIT ═══════════════════ -->
 <section class="toolkit" id="toolkit">
-  <div class="container">
+  <div class="container center" style="max-width:700px;">
     <div class="section-label">River Toolkit</div>
-    <h2 class="section-title">Everything you need to <span class="text-forest">revive a river.</span></h2>
-    <p class="section-sub">The Sungai Revive toolkit is a complete, downloadable resource for teachers, community leaders, and volunteers — designed to be replicable anywhere.</p>
+    <h2 class="section-title">Everything you need to <span class="text-leaf">revive a river</span> 🧰</h2>
+    <p class="section-sub center">The Sungai Revive toolkit is a free, downloadable resource for teachers, community leaders, and volunteers — ready to use anywhere.</p>
+  </div>
 
+  <div class="container">
     <div class="toolkit-grid">
       <div class="toolkit-card tk-blue fade-up">
         <span class="tk-icon">🦸</span>
         <h3>River Heroes Kit</h3>
-        <p>Complete starter pack for schools and communities. Everything needed to launch your local river programme.</p>
+        <p>Complete starter pack for schools and communities to launch a local river programme.</p>
         <div class="tk-tags">
           <span class="tk-tag">📋 Overview</span>
-          <span class="tk-tag">📌 Checklist</span>
           <span class="tk-tag">🏆 Certificates</span>
         </div>
       </div>
@@ -1505,10 +1076,9 @@ span[data-lang].lang-active { display: inline; }
       <div class="toolkit-card tk-green fade-up">
         <span class="tk-icon">📖</span>
         <h3>Facilitator Guide</h3>
-        <p>Step-by-step facilitation guide for teachers, community leaders, NGOs, and corporate volunteers.</p>
+        <p>Step-by-step guide for teachers, community leaders, NGOs, and corporate volunteers.</p>
         <div class="tk-tags">
           <span class="tk-tag">🏫 Schools</span>
-          <span class="tk-tag">👥 NGOs</span>
           <span class="tk-tag">🏢 Corporate</span>
         </div>
       </div>
@@ -1516,32 +1086,29 @@ span[data-lang].lang-active { display: inline; }
       <div class="toolkit-card tk-amber fade-up">
         <span class="tk-icon">📝</span>
         <h3>Activity Worksheets</h3>
-        <p>Hands-on, curriculum-aligned worksheets for students aged 7–18. Fun, interactive, bilingual.</p>
+        <p>Hands-on, curriculum-aligned worksheets for students aged 7–18. Fun & bilingual!</p>
         <div class="tk-tags">
           <span class="tk-tag">🎨 Interactive</span>
           <span class="tk-tag">🌐 Bilingual</span>
-          <span class="tk-tag">📐 A4 Format</span>
         </div>
       </div>
 
       <div class="toolkit-card tk-teal fade-up">
         <span class="tk-icon">🧠</span>
         <h3>Learning Modules</h3>
-        <p>Six thematic modules covering river ecosystems, pollution, biodiversity, climate, waste, and ESG.</p>
+        <p>Six fun modules covering river ecosystems, pollution, biodiversity, climate & ESG.</p>
         <div class="tk-tags">
           <span class="tk-tag">🌿 Ecosystem</span>
           <span class="tk-tag">♻️ Waste</span>
-          <span class="tk-tag">🌡️ Climate</span>
         </div>
       </div>
 
       <div class="toolkit-card tk-coral fade-up">
         <span class="tk-icon">🎯</span>
         <h3>Programme Templates</h3>
-        <p>Workshop agendas, event planning templates, volunteer coordination forms, and impact reporting sheets.</p>
+        <p>Workshop agendas, event planning templates, and impact reporting sheets.</p>
         <div class="tk-tags">
           <span class="tk-tag">📅 Agendas</span>
-          <span class="tk-tag">📊 Reports</span>
           <span class="tk-tag">📣 Posters</span>
         </div>
       </div>
@@ -1549,10 +1116,9 @@ span[data-lang].lang-active { display: inline; }
       <div class="toolkit-card tk-purple fade-up">
         <span class="tk-icon">⬇️</span>
         <h3>Download Centre</h3>
-        <p>All PDFs, presentation slides, posters, certificates, and infographics in one place. Free to use.</p>
+        <p>All PDFs, slides, posters, certificates, and infographics — free to use.</p>
         <div class="tk-tags">
           <span class="tk-tag">📄 PDF</span>
-          <span class="tk-tag">🖼️ Slides</span>
           <span class="tk-tag">🖨️ Print-ready</span>
         </div>
       </div>
@@ -1562,20 +1128,22 @@ span[data-lang].lang-active { display: inline; }
 
 <!-- ═══════════════════ ACTIVITIES ═══════════════════ -->
 <section class="activities" id="activities">
-  <div class="container">
+  <div class="container center" style="max-width:700px;">
     <div class="section-label">Community Activities</div>
-    <h2 class="section-title">Get your hands <span class="text-accent">dirty.</span> (For the right reasons.)</h2>
-    <p class="section-sub">From mudball production to river deployments — these are the real-world actions that bring the programme to life.</p>
+    <h2 class="section-title">Get your hands <span class="text-sun">dirty</span> for a good cause 🧱</h2>
+    <p class="section-sub center">From mudball-making to river deployments — these are the real-world actions that bring the programme to life.</p>
+  </div>
 
+  <div class="container">
     <div class="activities-grid">
       <div class="activity-card fade-up">
         <div class="activity-img ai-blue">🧱</div>
         <div class="activity-body">
           <div class="activity-type">Hands-on Workshop</div>
           <h3>Mudball Production Workshop</h3>
-          <p>Make bioremediation mudballs using soil, EM, biochar, and organic matter. Suitable for all ages.</p>
+          <p>Make bioremediation mudballs using soil, EM, biochar, and organic matter. Fun for all ages!</p>
           <div class="activity-footer">
-            <span class="activity-age">Ages 8+  ·  3–4 hrs</span>
+            <span class="activity-age">Ages 8+ · 3–4 hrs</span>
             <a href="#" class="activity-link">Register →</a>
           </div>
         </div>
@@ -1586,9 +1154,9 @@ span[data-lang].lang-active { display: inline; }
         <div class="activity-body">
           <div class="activity-type">River Action</div>
           <h3>River Mudball Deployment</h3>
-          <p>Deploy mudballs into targeted river sections. Monitor water quality before and after deployment.</p>
+          <p>Deploy mudballs into targeted river sections and watch the water quality improve!</p>
           <div class="activity-footer">
-            <span class="activity-age">All ages  ·  Half day</span>
+            <span class="activity-age">All ages · Half day</span>
             <a href="#" class="activity-link">Join →</a>
           </div>
         </div>
@@ -1599,9 +1167,9 @@ span[data-lang].lang-active { display: inline; }
         <div class="activity-body">
           <div class="activity-type">Community Clean-up</div>
           <h3>River Bank Gotong Royong</h3>
-          <p>Community-led river bank clean-up combining waste removal, education, and volunteer bonding.</p>
+          <p>A community-led river bank clean-up combining waste removal, education, and fun bonding time.</p>
           <div class="activity-footer">
-            <span class="activity-age">Family friendly  ·  2–3 hrs</span>
+            <span class="activity-age">Family friendly · 2–3 hrs</span>
             <a href="#" class="activity-link">Join →</a>
           </div>
         </div>
@@ -1612,9 +1180,9 @@ span[data-lang].lang-active { display: inline; }
         <div class="activity-body">
           <div class="activity-type">School Programme</div>
           <h3>River Heroes School Module</h3>
-          <p>Curriculum-aligned environmental education programme delivered in schools across Sarawak.</p>
+          <p>Curriculum-aligned, game-based environmental education delivered in schools across Sarawak.</p>
           <div class="activity-footer">
-            <span class="activity-age">Students  ·  Full programme</span>
+            <span class="activity-age">Students · Full programme</span>
             <a href="#" class="activity-link">Partner →</a>
           </div>
         </div>
@@ -1625,71 +1193,72 @@ span[data-lang].lang-active { display: inline; }
 
 <!-- ═══════════════════ SCIENCE ═══════════════════ -->
 <section class="science" id="science">
-  <div class="container">
+  <div class="container center" style="max-width:700px;">
     <div class="section-label">Research & Innovation</div>
-    <h2 class="section-title">Science-backed <span class="text-river">river rehabilitation.</span></h2>
-    <p class="section-sub">Sungai Revive uses proven bioremediation technologies. Here's the science behind the movement.</p>
+    <h2 class="section-title">Science-backed <span class="text-river">river rehabilitation</span> 🔬</h2>
+    <p class="section-sub center">Sungai Revive uses proven bioremediation technologies. Here's the science behind the magic.</p>
+  </div>
 
+  <div class="container">
     <div class="tech-cards">
       <div class="tech-card fade-up">
         <div class="tech-visual tv-amber">⚫</div>
         <h3>Biochar Technology</h3>
-        <p>Biochar is a carbon-rich material produced from organic matter through pyrolysis. When added to mudballs, it improves microbial activity, absorbs pollutants, and increases dissolved oxygen levels in rivers.</p>
+        <p>A carbon-rich material made through pyrolysis. Added to mudballs, it boosts microbial activity, absorbs pollutants, and increases dissolved oxygen in rivers.</p>
         <div class="tech-metrics">
           <div class="tech-metric"><div class="num">↑DO</div><div class="lbl">Dissolved Oxygen</div></div>
-          <div class="tech-metric"><div class="num">↓BOD</div><div class="lbl">Biochemical Oxygen Demand</div></div>
+          <div class="tech-metric"><div class="num">↓BOD</div><div class="lbl">Oxygen Demand</div></div>
         </div>
       </div>
 
       <div class="tech-card fade-up">
         <div class="tech-visual tv-green">🦠</div>
         <h3>Effective Microorganisms (EM)</h3>
-        <p>A blend of beneficial microorganisms including photosynthetic bacteria, lactic acid bacteria, and yeast. EM breaks down organic pollutants, reduces ammonia, and restores natural river ecology.</p>
+        <p>A blend of beneficial microbes — photosynthetic bacteria, lactic acid bacteria, and yeast — that break down pollutants and restore river ecology.</p>
         <div class="tech-metrics">
           <div class="tech-metric"><div class="num">↓NH₃</div><div class="lbl">Ammonia</div></div>
-          <div class="tech-metric"><div class="num">↓COD</div><div class="lbl">Chemical Oxygen Demand</div></div>
+          <div class="tech-metric"><div class="num">↓COD</div><div class="lbl">Chemical Demand</div></div>
         </div>
       </div>
 
       <div class="tech-card fade-up">
         <div class="tech-visual tv-blue">🧱</div>
         <h3>Mudball Technology</h3>
-        <p>Combining biochar, EM, clay soil, and organic matter into hand-formed balls that slowly release beneficial microorganisms into the river bed, targeting polluted sediments at the source.</p>
+        <p>Biochar + EM + clay soil + organic matter, hand-formed into balls that slowly release good microbes into the riverbed.</p>
         <div class="tech-metrics">
-          <div class="tech-metric"><div class="num">↑WQI</div><div class="lbl">Water Quality Index</div></div>
+          <div class="tech-metric"><div class="num">↑WQI</div><div class="lbl">Water Quality</div></div>
           <div class="tech-metric"><div class="num">6–8 wks</div><div class="lbl">Release Duration</div></div>
         </div>
       </div>
     </div>
 
-    <!-- Water Quality Explained -->
     <div style="margin-top: 4rem;">
-      <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:0.5rem;">Water Quality Indicators — Simply Explained</h3>
-      <p style="color:rgba(255,255,255,0.5); font-size:0.85rem; margin-bottom:2rem;">We track these 5 parameters before and after every mudball deployment.</p>
+      <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:0.5rem; color:var(--ink);">Water Quality, Simply Explained 💧</h3>
+      <p style="color:var(--muted); font-size:0.88rem; margin-bottom:2rem;">We track these 5 parameters before and after every mudball deployment.</p>
       <div class="wq-grid">
         <div class="wq-card">
           <div class="wq-name">DO</div>
           <div class="wq-label">💧 Dissolved Oxygen</div>
           <div class="wq-bar"><div class="wq-fill" style="width:80%;background:linear-gradient(90deg,#0ea5e9,#22d3ee);"></div></div>
-          <p class="wq-desc">Oxygen available for fish and aquatic life. Higher is healthier. Target: >7 mg/L</p>
+          <p class="wq-desc">Oxygen for fish and aquatic life. Higher = healthier. Target: >7 mg/L</p>
         </div>
         <div class="wq-card">
           <div class="wq-name">BOD</div>
           <div class="wq-label">🦠 Biochemical Oxygen Demand</div>
           <div class="wq-bar"><div class="wq-fill" style="width:35%;background:linear-gradient(90deg,#22c55e,#86efac);"></div></div>
-          <p class="wq-desc">Amount of oxygen needed to break down organic matter. Lower is cleaner.</p>
+          <p class="wq-desc">Oxygen needed to break down organic matter. Lower = cleaner.</p>
         </div>
         <div class="wq-card">
           <div class="wq-name">COD</div>
           <div class="wq-label">⚗️ Chemical Oxygen Demand</div>
           <div class="wq-bar"><div class="wq-fill" style="width:28%;background:linear-gradient(90deg,#f59e0b,#fcd34d);"></div></div>
-          <p class="wq-desc">Measures chemical pollutants. Lower indicates better water quality.</p>
+          <p class="wq-desc">Measures chemical pollutants. Lower = better water quality.</p>
         </div>
         <div class="wq-card">
           <div class="wq-name">NH₃</div>
           <div class="wq-label">🧪 Ammonia Nitrogen</div>
           <div class="wq-bar"><div class="wq-fill" style="width:20%;background:linear-gradient(90deg,#a855f7,#c084fc);"></div></div>
-          <p class="wq-desc">Toxic to aquatic life at high levels. Indicates sewage or waste runoff.</p>
+          <p class="wq-desc">Toxic to aquatic life at high levels — a sign of sewage or waste runoff.</p>
         </div>
         <div class="wq-card">
           <div class="wq-name">WQI</div>
@@ -1702,13 +1271,32 @@ span[data-lang].lang-active { display: inline; }
   </div>
 </section>
 
+<!-- ═══════════════════ STATS / IMPACT (moved lower) ═══════════════════ -->
+<section class="stats-strip" id="impact">
+  <div class="container center" style="max-width:700px;">
+    <div class="section-label">Our Impact So Far</div>
+    <h2 class="section-title">The numbers behind the movement 📈</h2>
+    <p class="section-sub center">Every clean-up, every mudball, every student — it all adds up.</p>
+  </div>
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card fade-up"><div class="stat-icon">🌊</div><div class="stat-num count-num" data-target="12">0</div><div class="stat-label">Rivers Targeted</div></div>
+      <div class="stat-card fade-up"><div class="stat-icon">🧱</div><div class="stat-num count-num" data-target="5000">0</div><div class="stat-label">Mudballs Deployed</div></div>
+      <div class="stat-card fade-up"><div class="stat-icon">🏫</div><div class="stat-num count-num" data-target="30">0</div><div class="stat-label">Schools Engaged</div></div>
+      <div class="stat-card fade-up"><div class="stat-icon">👥</div><div class="stat-num count-num" data-target="1200">0</div><div class="stat-label">Community Members</div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════ ESG DASHBOARD ═══════════════════ -->
 <section class="esg" id="esg">
-  <div class="container">
+  <div class="container center" style="max-width:700px;">
     <div class="section-label">ESG Impact</div>
-    <h2 class="section-title">Every drop. <span class="text-river">Every number. Counted.</span></h2>
-    <p class="section-sub">Transparent, real-time ESG metrics that demonstrate measurable environmental and social impact for corporate partners and government stakeholders.</p>
+    <h2 class="section-title">Every drop, <span class="text-river">every number, counted</span> 📊</h2>
+    <p class="section-sub center">Transparent, real-time ESG metrics showing measurable environmental and social impact.</p>
+  </div>
 
+  <div class="container">
     <div class="esg-dashboard fade-up">
       <div class="esg-header">
         <div class="esg-title-block">
@@ -1719,63 +1307,26 @@ span[data-lang].lang-active { display: inline; }
       </div>
 
       <div class="metrics-grid">
-        <div class="metric-box">
-          <div class="icon">🌊</div>
-          <div class="number text-river">12</div>
-          <div class="label">Rivers Rehabilitated</div>
-        </div>
-        <div class="metric-box">
-          <div class="icon">🧱</div>
-          <div class="number text-accent">5,000+</div>
-          <div class="label">Mudballs Deployed</div>
-        </div>
-        <div class="metric-box">
-          <div class="icon">👥</div>
-          <div class="number" style="color:#4ade80">1,200+</div>
-          <div class="label">Volunteers</div>
-        </div>
-        <div class="metric-box">
-          <div class="icon">🏫</div>
-          <div class="number text-river">30</div>
-          <div class="label">Schools Engaged</div>
-        </div>
-        <div class="metric-box">
-          <div class="icon">👨‍👩‍👧</div>
-          <div class="number text-accent">3,500+</div>
-          <div class="label">Students Reached</div>
-        </div>
-        <div class="metric-box">
-          <div class="icon">🏘️</div>
-          <div class="number" style="color:#4ade80">18</div>
-          <div class="label">Communities</div>
-        </div>
-        <div class="metric-box">
-          <div class="icon">🔬</div>
-          <div class="number text-river">48</div>
-          <div class="label">Workshops Held</div>
-        </div>
-        <div class="metric-box">
-          <div class="icon">🤝</div>
-          <div class="number text-accent">15</div>
-          <div class="label">Corporate Partners</div>
-        </div>
-        <div class="metric-box">
-          <div class="icon">🌿</div>
-          <div class="number" style="color:#4ade80">↑18%</div>
-          <div class="label">WQI Improvement</div>
-        </div>
+        <div class="metric-box"><div class="icon">🌊</div><div class="number text-river">12</div><div class="label">Rivers Rehabilitated</div></div>
+        <div class="metric-box"><div class="icon">🧱</div><div class="number text-sun">5,000+</div><div class="label">Mudballs Deployed</div></div>
+        <div class="metric-box"><div class="icon">👥</div><div class="number text-leaf">1,200+</div><div class="label">Volunteers</div></div>
+        <div class="metric-box"><div class="icon">🏫</div><div class="number text-river">30</div><div class="label">Schools Engaged</div></div>
+        <div class="metric-box"><div class="icon">👨‍👩‍👧</div><div class="number text-sun">3,500+</div><div class="label">Students Reached</div></div>
+        <div class="metric-box"><div class="icon">🏘️</div><div class="number text-leaf">18</div><div class="label">Communities</div></div>
+        <div class="metric-box"><div class="icon">🔬</div><div class="number text-river">48</div><div class="label">Workshops Held</div></div>
+        <div class="metric-box"><div class="icon">🤝</div><div class="number text-sun">15</div><div class="label">Corporate Partners</div></div>
+        <div class="metric-box"><div class="icon">🌿</div><div class="number text-leaf">↑18%</div><div class="label">WQI Improvement</div></div>
       </div>
 
-      <!-- SDG Alignment -->
       <div>
-        <p style="font-size:0.78rem; font-weight:700; letter-spacing:1px; color:rgba(255,255,255,0.4); text-transform:uppercase; margin-bottom:0.8rem;">UN Sustainable Development Goals Alignment</p>
+        <p style="font-size:0.78rem; font-weight:800; letter-spacing:1px; color:var(--muted); text-transform:uppercase; margin-bottom:0.8rem;">UN Sustainable Development Goals Alignment</p>
         <div class="sdg-row">
-          <span class="sdg-badge" style="background:rgba(255,58,33,0.1);border-color:rgba(255,58,33,0.3);color:#ff6b4a;">SDG 3 · Good Health</span>
-          <span class="sdg-badge" style="background:rgba(38,189,226,0.1);border-color:rgba(38,189,226,0.3);color:#26bde2;">SDG 6 · Clean Water</span>
-          <span class="sdg-badge" style="background:rgba(76,159,56,0.1);border-color:rgba(76,159,56,0.3);color:#4c9f38;">SDG 13 · Climate Action</span>
-          <span class="sdg-badge" style="background:rgba(191,139,46,0.1);border-color:rgba(191,139,46,0.3);color:#bf8b2e;">SDG 14 · Life Below Water</span>
-          <span class="sdg-badge" style="background:rgba(86,192,43,0.1);border-color:rgba(86,192,43,0.3);color:#56c02b;">SDG 15 · Life on Land</span>
-          <span class="sdg-badge" style="background:rgba(25,72,106,0.2);border-color:rgba(25,72,106,0.4);color:#19486a;">SDG 17 · Partnerships</span>
+          <span class="sdg-badge" style="background:#ffe4e0;color:#c0392b;">SDG 3 · Good Health</span>
+          <span class="sdg-badge" style="background:#dbf3fc;color:#0c7ea8;">SDG 6 · Clean Water</span>
+          <span class="sdg-badge" style="background:#e3f3da;color:#3d7a2c;">SDG 13 · Climate Action</span>
+          <span class="sdg-badge" style="background:#fcefd6;color:#a8761e;">SDG 14 · Life Below Water</span>
+          <span class="sdg-badge" style="background:#e6f6da;color:#458223;">SDG 15 · Life on Land</span>
+          <span class="sdg-badge" style="background:#e0e7f0;color:#34527a;">SDG 17 · Partnerships</span>
         </div>
       </div>
     </div>
@@ -1784,42 +1335,24 @@ span[data-lang].lang-active { display: inline; }
 
 <!-- ═══════════════════ GET INVOLVED ═══════════════════ -->
 <section class="get-involved" id="involve">
-  <div class="container">
+  <div class="container center" style="max-width:700px;">
     <div class="section-label">Join the Movement</div>
     <h2 class="section-title">
-      <span data-lang="en" class="lang-active">How will <span class="text-river">you</span> help restore our rivers?</span>
-      <span data-lang="bm">Bagaimana <span class="text-river">anda</span> akan membantu memulihkan sungai kita?</span>
-      <span data-lang="zh">您将如何帮助<span class="text-river">恢复</span>我们的河流？</span>
-      <span data-lang="ib">Lapa cara <span class="text-river">nuan</span> ngembuan sungai kitai?</span>
+      <span data-lang="en" class="lang-active">How will <span class="text-leaf">you</span> help restore our rivers? 🦸</span>
+      <span data-lang="bm">Bagaimana <span class="text-leaf">anda</span> akan membantu memulihkan sungai kita? 🦸</span>
+      <span data-lang="zh">您将如何帮助<span class="text-leaf">恢复</span>我们的河流？🦸</span>
+      <span data-lang="ib">Lapa cara <span class="text-leaf">nuan</span> ngembuan sungai kitai? 🦸</span>
     </h2>
-    <p class="section-sub">Every role matters. Whether you are a student, teacher, corporate, or community member — there is a place for you in Sungai Revive.</p>
+    <p class="section-sub center">Every role matters. Whether you're a student, teacher, corporate, or community member — there's a place for you.</p>
+  </div>
 
+  <div class="container">
     <div class="involve-grid">
-      <a href="#" class="involve-card fade-up">
-        <div class="involve-icon">🦸</div>
-        <h3>Volunteer</h3>
-        <p>Join river clean-ups, mudball workshops, and community events.</p>
-      </a>
-      <a href="#" class="involve-card fade-up">
-        <div class="involve-icon">🏫</div>
-        <h3>School Partner</h3>
-        <p>Bring River Heroes Kit to your school. Get certified.</p>
-      </a>
-      <a href="#" class="involve-card fade-up">
-        <div class="involve-icon">🏘️</div>
-        <h3>Community Partner</h3>
-        <p>Adopt a river. Run a local programme. Build river guardians.</p>
-      </a>
-      <a href="#" class="involve-card fade-up">
-        <div class="involve-icon">🏢</div>
-        <h3>Corporate Partner</h3>
-        <p>ESG-aligned CSR programmes with measurable impact reports.</p>
-      </a>
-      <a href="#" class="involve-card fade-up">
-        <div class="involve-icon">💰</div>
-        <h3>Sponsor</h3>
-        <p>Fund mudball kits, school resources, and water monitoring equipment.</p>
-      </a>
+      <a href="#" class="involve-card fade-up"><div class="involve-icon">🦸</div><h3>Volunteer</h3><p>Join river clean-ups, mudball workshops, and community events.</p></a>
+      <a href="#" class="involve-card fade-up"><div class="involve-icon">🏫</div><h3>School Partner</h3><p>Bring River Heroes Kit to your school. Get certified.</p></a>
+      <a href="#" class="involve-card fade-up"><div class="involve-icon">🏘️</div><h3>Community Partner</h3><p>Adopt a river. Run a local programme. Build guardians.</p></a>
+      <a href="#" class="involve-card fade-up"><div class="involve-icon">🏢</div><h3>Corporate Partner</h3><p>ESG-aligned CSR programmes with measurable impact reports.</p></a>
+      <a href="#" class="involve-card fade-up"><div class="involve-icon">💰</div><h3>Sponsor</h3><p>Fund mudball kits, school resources, and monitoring equipment.</p></a>
     </div>
   </div>
 </section>
@@ -1828,10 +1361,10 @@ span[data-lang].lang-active { display: inline; }
 <div class="cta-banner">
   <div class="container">
     <h2>
-      <span data-lang="en" class="lang-active">Rivers can recover. <span class="text-river">With your help.</span></span>
-      <span data-lang="bm">Sungai boleh pulih. <span class="text-river">Dengan bantuan anda.</span></span>
-      <span data-lang="zh">河流可以复苏。<span class="text-river">有了你的帮助。</span></span>
-      <span data-lang="ib">Sungai ulih mih pulih. <span class="text-river">Enggau pertulun nuan.</span></span>
+      <span data-lang="en" class="lang-active">Rivers can recover. <span class="text-river">With your help.</span> 💚</span>
+      <span data-lang="bm">Sungai boleh pulih. <span class="text-river">Dengan bantuan anda.</span> 💚</span>
+      <span data-lang="zh">河流可以复苏。<span class="text-river">有了你的帮助。</span> 💚</span>
+      <span data-lang="ib">Sungai ulih mih pulih. <span class="text-river">Enggau pertulun nuan.</span> 💚</span>
     </h2>
     <p>Download the toolkit, register your school, or contact us to run a programme in your community.</p>
     <div class="btns">
@@ -1845,11 +1378,11 @@ span[data-lang].lang-active { display: inline; }
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#" class="nav-logo" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;">
+      <a href="#" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;">
         <div class="drop"></div>
-        <span style="font-size:1.1rem;font-weight:800;color:#fff;">SUNGAI <em style="color:var(--river);font-style:normal;">REVIVE</em></span>
+        <span style="font-family:'Baloo 2',sans-serif; font-size:1.2rem;font-weight:800;color:#fff;">SUNGAI <em style="color:#4ade80;font-style:normal;">REVIVE</em></span>
       </a>
-      <p>Sarawak's integrated river rehabilitation movement — uniting education, science, community, and ESG leadership to restore our rivers for generations to come.</p>
+      <p>Sarawak's fun, integrated river rehabilitation movement — uniting education, science, community, and ESG leadership to restore our rivers for generations to come.</p>
       <p class="footer-tagline">✨ Jaga Sungai. Jadi Wira. Bina Masa Depan.</p>
     </div>
 
@@ -1888,9 +1421,9 @@ span[data-lang].lang-active { display: inline; }
   </div>
 
   <div class="footer-bottom">
-    <p>© 2025 Sungai Revive · Powered by KOBIS & SEB · Sarawak, Malaysia</p>
+    <p>© 2025 Sungai Revive · Powered by KOBIS & Sarawak Energy · Sarawak, Malaysia</p>
     <div class="footer-partners">
-      <span class="partner-pill">⚡ SEB</span>
+      <span class="partner-pill">⚡ Sarawak Energy</span>
       <span class="partner-pill">🌿 KOBIS</span>
       <span class="partner-pill">🏛️ Sarawak</span>
     </div>
@@ -1899,7 +1432,6 @@ span[data-lang].lang-active { display: inline; }
 
 <!-- ═══════════════════ JAVASCRIPT ═══════════════════ -->
 <script>
-// Language toggle
 let currentLang = 'en';
 
 function setLang(lang) {
@@ -1907,38 +1439,27 @@ function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
   document.querySelectorAll('[data-lang]').forEach(el => {
-    if (el.getAttribute('data-lang') === lang) {
-      el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
-    } else {
-      el.style.display = 'none';
-    }
+    el.classList.toggle('lang-active', el.getAttribute('data-lang') === lang);
   });
 }
 
-// Intersection Observer for fade-up
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-// Counter animation
 function animateCounter(el) {
   const target = parseInt(el.getAttribute('data-target'));
-  const duration = 2000;
+  const duration = 1600;
   const step = target / (duration / 16);
   let current = 0;
   const timer = setInterval(() => {
     current += step;
-    if (current >= target) {
-      current = target;
-      clearInterval(timer);
-    }
-    el.textContent = Math.floor(current).toLocaleString() + (el.getAttribute('data-target') > 100 ? '+' : '');
+    if (current >= target) { current = target; clearInterval(timer); }
+    el.textContent = Math.floor(current).toLocaleString() + (target > 100 ? '+' : '');
   }, 16);
 }
 
@@ -1949,39 +1470,17 @@ const counterObserver = new IntersectionObserver((entries) => {
       animateCounter(entry.target);
     }
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.3 });
 
 document.querySelectorAll('.count-num').forEach(el => counterObserver.observe(el));
 
-// Particles
-const particleContainer = document.getElementById('particles');
-for (let i = 0; i < 20; i++) {
-  const p = document.createElement('div');
-  p.className = 'particle';
-  const size = Math.random() * 6 + 2;
-  p.style.cssText = `
-    width: ${size}px;
-    height: ${size}px;
-    left: ${Math.random() * 100}%;
-    --dur: ${Math.random() * 10 + 8}s;
-    --delay: ${Math.random() * 10}s;
-  `;
-  particleContainer.appendChild(p);
-}
-
-// Nav scroll effect
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
-  if (window.scrollY > 50) {
-    nav.style.background = 'rgba(15,23,42,0.97)';
-  } else {
-    nav.style.background = 'rgba(15,23,42,0.85)';
-  }
+  nav.style.background = window.scrollY > 50 ? 'rgba(255,255,255,0.98)' : 'rgba(255,255,255,0.9)';
 });
 
-// Stagger fade-up delays
-document.querySelectorAll('.pillar-card, .toolkit-card, .activity-card, .involve-card, .metric-box').forEach((el, i) => {
-  el.style.transitionDelay = `${(i % 5) * 0.1}s`;
+document.querySelectorAll('.pillar-card, .toolkit-card, .activity-card, .involve-card, .stat-card, .tl-content').forEach((el, i) => {
+  el.style.transitionDelay = `${(i % 4) * 0.06}s`;
 });
 </script>
 </body>
